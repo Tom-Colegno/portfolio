@@ -1,0 +1,282 @@
+.controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+body {
+    background-image: url('images/mine.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    max-width: 1920px;
+    max-height: 1080px;
+    overflow: hidden; /* Pour cacher tout contenu qui dépasse la taille spécifiée */
+}
+
+
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+
+#gold {
+    font-size: 24px;
+    color: #ffd700; /* Couleur or */
+}
+
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: transparent; 
+    border: none;
+    border-radius: 5px;
+    margin-left: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Ajout pour l'animation du survol */
+}
+
+button:hover {
+    transform: scale(2); /* Ajout pour agrandir le bouton au survol */
+}
+
+.bouton {
+    width: 60px;
+    
+}
+
+.update{
+    padding-top: 15px;
+}
+
+h1, span {
+    font-family: 'Acknowledgement', sans-serif;
+    text-shadow: 1px 1px 2px #c8a165, 0 0 1em #d4af37, 0 0 0.2em #ffd700;
+}
+
+p {
+    font-size: 1.2rem;
+    color: aliceblue;
+    font-family: 'Texas Tango BOLD PERSONAL USE', sans-serif;
+    text-shadow: 1px 1px 2px #c8a165, 0 0 1em #d4af37, 0 0 0.2em #ffd700;
+}
+
+span{
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: #00000080;
+}
+
+span:hover{
+    background-color: #333;
+}
+
+/* Animation pour agrandir et réduire le nombre d'or */
+@keyframes growShrink {
+    0% {
+        transform: scale(1); /* Taille normale au début */
+    }
+    50% {
+        transform: scale(1.5); /* Taille agrandie à mi-chemin */
+    }
+    100% {
+        transform: scale(1); /* Retour à la taille normale à la fin */
+    }
+}
+
+/* Appliquer l'animation à l'élément contenant le nombre d'or */
+#gold {
+    animation: growShrink 2s infinite; /* Animation de 2 secondes en boucle */
+}
+
+
+
+#miner {
+    position: relative;
+    bottom: 50%; /* Modifier */
+    left: 50%; /* Modifier */
+    transform: translateX(-50%); /* Modifier */
+    width: 50px;
+    height: 50px;
+    margin-bottom: 100%;
+}
+
+/*#dynamite{
+    position: relative;
+    bottom: 50%;
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    margin-bottom: 100%;  
+}*/
+
+@keyframes mine {
+    0% { transform: translateY(0px) }
+    50% { transform: translateY(-5px) }
+    100% { transform: translateY(0px) }
+}
+
+#miner img {
+    width: 256px;
+    height: 256px;
+    animation: mine 1s infinite;
+}
+
+/*#dynamite img{
+    width: 256px;
+    height: 256px;
+}*/
+
+.right-button-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.nbGold {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;  
+    vertical-align: middle;
+    margin-left: 115px;
+}
+
+.nbGold img {
+    margin-left: 60px; /* Ajoute un espace entre l'image et le texte */
+}
+
+/*fullscreen-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+}*/
+
+/* Animation pour agrandir et réduire le bouton de la pioche */
+@keyframes subtleGrowShrink {
+    0% {
+        transform: scale(1); /* Taille normale au début */
+    }
+    50% {
+        transform: scale(1.23); /* Taille légèrement agrandie à mi-chemin */
+    }
+    100% {
+        transform: scale(1); /* Retour à la taille normale à la fin */
+    }
+}
+
+/* Appliquer l'animation au bouton de la pioche */
+#button1 {
+    animation: subtleGrowShrink 2s infinite; /* Animation de 1 seconde en boucle */
+}
+
+/* Animation pour agrandir et réduire le bouton de la pioche */
+@keyframes subtleGrowShrink {
+    0% {
+        transform: scale(1); /* Taille normale au début */
+    }
+    50% {
+        transform: scale(1.23); /* Taille légèrement agrandie à mi-chemin */
+    }
+    100% {
+        transform: scale(1); /* Retour à la taille normale à la fin */
+    }
+}
+
+/* Appliquer l'animation au bouton de la pioche */
+#button2 {
+    animation: subtleGrowShrink 2s infinite; /* Animation de 1 seconde en boucle */
+}
+
+/* Animation pour agrandir et réduire le bouton de la pioche */
+@keyframes subtleGrowShrink {
+    0% {
+        transform: scale(1); /* Taille normale au début */
+    }
+    50% {
+        transform: scale(1.23); /* Taille légèrement agrandie à mi-chemin */
+    }
+    100% {
+        transform: scale(1); /* Retour à la taille normale à la fin */
+    }
+}
+
+/* Appliquer l'animation au bouton de la pioche */
+#button3 {
+    animation: subtleGrowShrink 2s infinite; /* Animation de 1 seconde en boucle */
+}
+
+/* Animation pour agrandir et réduire le bouton de la pioche */
+@keyframes subtleGrowShrink {
+    0% {
+        transform: scale(1); /* Taille normale au début */
+    }
+    50% {
+        transform: scale(1.23); /* Taille légèrement agrandie à mi-chemin */
+    }
+    100% {
+        transform: scale(1); /* Retour à la taille normale à la fin */
+    }
+}
+
+/* Appliquer l'animation au bouton de la pioche */
+#button4 {
+    animation: subtleGrowShrink 2s infinite; /* Animation de 1 seconde en boucle */
+}
+
+/* Animation pour agrandir et réduire le bouton de la pioche */
+@keyframes subtleGrowShrink {
+    0% {
+        transform: scale(1); /* Taille normale au début */
+    }
+    50% {
+        transform: scale(1.23); /* Taille légèrement agrandie à mi-chemin */
+    }
+    100% {
+        transform: scale(1); /* Retour à la taille normale à la fin */
+    }
+}
+
+/* Appliquer l'animation au bouton de la pioche */
+#button5 {
+    animation: subtleGrowShrink 2s infinite; /* Animation de 1 seconde en boucle */
+}
+
+/* Appliquer une image personnalisée comme curseur de la souris */
+body, .update {
+    cursor: url('images/mouse.png') 10 10, auto;
+}
+
+/* Appliquer une image personnalisée comme curseur de la souris pour la pioche */
+#button1 {
+    cursor: url('images/pioche.png') 10 10, auto;
+}
+
+/* Appliquer une image personnalisée comme curseur de la souris pour lvl up */
+#button2 {
+    cursor: url('images/lvlup.png') 10 10, auto;
+}
+/* Appliquer une image personnalisée comme curseur de la souris pour le cafe */
+#button3 {
+    cursor: url('images/cuillere.png') 10 10, auto;
+}
+
+/* Appliquer une image personnalisée comme curseur de la souris pour la canette */
+#button4 {
+    cursor: url('images/take.png') 10 10, auto;
+}
+
+/* Appliquer une image personnalisée comme curseur de la souris pour la dynamite */
+#button5 {
+    cursor: url('images/briquet.png') 10 10, auto;
+}
+/* Appliquer une image personnalisée comme curseur de la souris pour le reset */
+#button6 {
+    cursor: url('images/delete.png') 10 10, auto;
+}

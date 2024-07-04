@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idle Gold Miner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.cdnfonts.com/css/acknowledgement" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/texas-tango-personal-use" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="controls">
+                <h1>
+                    <button onclick="resetGame()">
+                        <img class="bouton" id="button6" src="images/renitialiser.svg">
+                    </button>
+                </h1>
+                <h1 class="nbGold">
+                    <span id="gold">0</span>
+                    <img id="gold" src="images/goldCoin.svg" width="50" alt="">
+                </h1>
+                <div class="right-button-header">
+                    <h1>
+                        <button  onclick="toggleBackgroundMusic()">
+                            <img class="bouton" id="button7" src="images/music.svg">
+                        </button>
+                    </h1>
+                    <h1>
+                        <button onclick="muteSoundEffects()">
+                            <img class="bouton" id="button8" src="images/sound.svg">
+                        </button>
+                    </h1>
+                    <h1>
+                        <button onclick="fullScreen()">
+                            <img class="bouton" id="fullscreen-button" src="images/ecran.svg">
+                        </button>
+                    </h1>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="element"></div>
+    <div class="update">
+        <button onclick="clickGold()">
+            <img class="bouton" id="button1" src="images/pioche.svg">
+        </button>
+        <p>Améliorer le mineur: <span id="minerCost">10</span> gold</p>
+        <button onclick="upMiner()">
+            <img class="bouton" id="button2" src="images/lvlup.svg">
+        </button>
+        <p>Café: <span id="cafeCost">200</span> gold</p>
+        <button onclick="upCafe()">
+            <img class="bouton" id="button3" src="images/cafe.svg">
+        </button>
+        <p>Boisson energisante: <span id="redbullCost">2000</span> gold</p>
+        <button onclick="upRedbull()">
+            <img class="bouton" id="button4" src="images/redbull.svg">
+        </button>
+        <p>Dynamite: <span id="dynamiteCost">200000</span> gold</p>
+        <button onclick="upDynamite()">
+            <img class="bouton" id="button5" src="images/dynamite.svg">
+        </button>
+    </div>
+    <div id="dynamite"></div>
+    <div id="miner"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
