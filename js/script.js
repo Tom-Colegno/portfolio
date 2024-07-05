@@ -26,37 +26,14 @@ window.onscroll = () => {
             });
             // active sections for animation on scroll
             sec.classList.add('show-animate');
-        }
-        // if want to use animation that repeats on scroll use this
-        else {
+        } else {
+            // if want to use animation that repeats on scroll use this
             sec.classList.remove('show-animate');
         }
     });
 
-    // contact form sender
-    $('#contact-form').on('submit', function(event) {
-        event.preventDefault(); // prevent reload
-        
-        var formData = new FormData(this);
-        formData.append('service_id', 'service_yzr769m');
-        formData.append('template_id', 'template_5itw1ce');
-        formData.append('user_id', 'RTymPyyr-fp1fyDvR');
-        
-        $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
-            type: 'POST',
-            data: formData,
-            contentType: false, // auto-detection
-            processData: false // no need to parse formData to string
-        }).done(function() {
-            alert('Your mail is sent!');
-        }).fail(function(error) {
-            alert('Oops... ' + JSON.stringify(error));
-        });
-    });
-
     // sticky header
     let header = document.querySelector('header');
-
     header.classList.toggle('sticky', window.scrollY > 100);
 
     // remove toggle icon and navbar when click navbar links (scroll)
@@ -70,8 +47,61 @@ window.onscroll = () => {
 
     if (Math.ceil(scrolled) === scrollable) {
         footer.classList.add('show-animate');
-    }
-    else {
+    } else {
         footer.classList.remove('show-animate');
     }
 }
+
+// contact form sender with retry mechanism and spam protection
+$('#contact-form').on('submit', function(event) {
+    event.preventDefault(); // prevent reload
+
+    const lastSent = localStorage.getItem('lastSent');
+    const now = new Date().getTime();
+    const oneHour = 60 * 60 * 1000;
+
+    if (lastSent && (now - lastSent < oneHour)) {
+        alert('You can only send one message per hour.');
+        return;
+    }
+
+    let formData = new FormData(this);
+    formData.append('service_id', 'service_yzr769m');
+    formData.append('template_id', 'template_5itw1ce');
+    formData.append('user_id', 'RTymPyyr-fp1fyDvR');
+
+    const sendForm = async (formData) => {
+        const maxRetries = 3;
+        let retries = 0;
+        let delay = 1000; // 1 second
+
+        while (retries < maxRetries) {
+            try {
+                let response = await $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+                    type: 'POST',
+                    data: formData,
+                    contentType: false, // auto-detection
+                    processData: false // no need to parse formData to string
+                });
+
+                alert('Your mail is sent!');
+                localStorage.setItem('lastSent', now);
+                return;
+
+            } catch (error) {
+                if (error.status === 429) { // Check for 429 status code
+                    retries++;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2; // Exponential backoff
+                } else {
+                    alert('Oops... ' + JSON.stringify(error));
+                    return;
+                }
+            }
+        }
+
+        alert('Failed to send email after multiple attempts.');
+    };
+
+    sendForm(formData);
+});
